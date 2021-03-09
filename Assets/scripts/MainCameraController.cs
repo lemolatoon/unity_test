@@ -19,7 +19,10 @@ public class MainCameraController : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.LeftShift)) {
             camera.transform.localPosition += new Vector3(0,0.001f,-0.001f);
-        } else {
+        }
+
+        //keyを離したとき
+        if(Input.GetKeyUp(KeyCode.LeftShift)) {
             camera.transform.localPosition = INITIALPOS;
         }
     }
