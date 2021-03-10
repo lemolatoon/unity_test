@@ -5,14 +5,17 @@ using UnityEngine;
 public class button : MonoBehaviour
 {
 
-    public Camera FirstCamera;
-    public Camera SecondCamera;
+    public GameObject FirstCamera;
+    public GameObject SecondCamera;
+
+    public GameObject master;
 
     // Start is called before the first frame update
     void Start()
     {
-        FirstCamera.enabled = true;
-        SecondCamera.enabled = false;
+        if(master.GetComponent<GameMaster>().MainCamera.activeSelf) {
+            SecondCamera.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -22,9 +25,13 @@ public class button : MonoBehaviour
     }
 
     public void onClick() {
-        enabled = FirstCamera.enabled;
-        FirstCamera.enabled = SecondCamera.enabled;
-        SecondCamera.enabled = enabled;
+        if(!SecondCamera.activeSelf) {
+            SecondCamera.SetActive(true);
+            master.GetComponent<GameMaster>().MainCamera.SetActive(false);
+        } else {
+            master.GetComponent<GameMaster>().MainCamera.SetActive(true);
+            SecondCamera.SetActive(false);
+        }
     }
 
 }

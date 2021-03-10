@@ -7,11 +7,16 @@ public class MainCameraController : MonoBehaviour
     // Start is called before the first frame update
     //public Camera camera;
     private Vector3 INITIALPOS;
+    public GameObject master;
     void Start()
     {
+        master = GameObject.Find("GameMaster");
         //camera = this.GetComponent<Camera>();
         //相対座標
         INITIALPOS = transform.localPosition;
+        master.GetComponent<GameMaster>().MainCamera = this.gameObject;
+        Debug.Log("cameraをセット");
+        Debug.Log(master.GetComponent<GameMaster>().MainCamera);
     }
 
     // Update is called once per frame
