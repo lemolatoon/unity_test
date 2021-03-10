@@ -15,7 +15,7 @@ public class ball : MonoBehaviour
     void Update()
     {
         if(Input.GetKey("u")) {
-            rb.AddForce(new Vector3(0,5,0));
+            rb.AddForce(new Vector3(0,10,0));
         }
     }
 }
