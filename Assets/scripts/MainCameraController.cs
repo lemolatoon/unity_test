@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainCameraController : MonoBehaviour
+public class MainCameraController : MLAPI.NetworkedBehaviour
 {
     // Start is called before the first frame update
     //public Camera camera;
@@ -14,7 +14,9 @@ public class MainCameraController : MonoBehaviour
         //camera = this.GetComponent<Camera>();
         //相対座標
         INITIALPOS = transform.localPosition;
-        master.GetComponent<GameMaster>().MainCamera = this.gameObject;
+        if(this.IsOwner) { //自分が操作しているものだけ
+           master.GetComponent<GameMaster>().MainCamera = this.gameObject; //GameMasterにMainCameraの情報を渡す 
+        }
         Debug.Log("cameraをセット");
         Debug.Log(master.GetComponent<GameMaster>().MainCamera);
     }

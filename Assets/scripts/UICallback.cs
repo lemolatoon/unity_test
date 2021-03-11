@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UICallBack : MonoBehaviour
+public class UICallback : MonoBehaviour
 {
     public void OnClickHost() {
         MLAPI.NetworkingManager.Singleton.StartHost();
